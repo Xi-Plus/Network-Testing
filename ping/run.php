@@ -12,10 +12,11 @@ if(strpos(PHP_OS,"WIN")!==false){
 }else die("Cannot identify system os.");
 while(true){
 	foreach($config["domain"] as $domain => $color){
-		echo "run\r\n";
+		$command="ping ".$domain." -".$parameter." ".$config["pingtimes"];
+		echo $command."\r\n";
 		$time=date("Y-m-d H:i:s");
 		ob_start();
-		system("ping ".$domain." -".$parameter." 10");
+		system($command);
 		$text=ob_get_contents();
 		ob_end_clean();
 		preg_match("/(\d*)%/",$text,$match);

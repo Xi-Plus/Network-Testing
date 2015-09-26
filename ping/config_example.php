@@ -6,6 +6,7 @@ $config["domain"]=array(
 "www.facebook.com"=>array(0,0,255),
 "www.google.com"=>array(255,0,0)
 );
+$config["pingtimes"]=10;
 $config["sleeptime"]["one"]=30;
 $config["sleeptime"]["all"]=60;
 ?>
