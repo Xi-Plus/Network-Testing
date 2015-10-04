@@ -4,10 +4,11 @@ if(php_sapi_name()!='cli')die("Permission Denied");
 require("config.php");
 require($config["sql"]);
 $result=array();
-echo "system os : ".PHP_OS."\r\n";
-if(strpos(PHP_OS,"WIN")!==false){
+$OS=strtoupper(PHP_OS);
+echo "system os : ".$OS."\r\n";
+if(strpos($OS,"WIN")!==false){
 	$parameter="n";
-}else if(strpos(PHP_OS,"LINUX")!==false){
+}else if(strpos($OS,"LINUX")!==false){
 	$parameter="c";
 }else die("Cannot identify system os.");
 while(true){
