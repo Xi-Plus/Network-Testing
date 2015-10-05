@@ -36,12 +36,12 @@ $start_time=$end_time-60*60;
 $count=5;
 for($i=0;$i<=$count;$i++){
 	imageline($img,$start_x,P($i,0,$count,$start_y,$end_y),$end_x,P($i,0,$count,$start_y,$end_y),imagecolorallocate($img,0,0,0));
-	imagettftext($img,10,0,$start_x-60,5+P($i,0,$count,$start_y,$end_y),imagecolorallocate($img,0,0,0),"arial.ttf",round(P($i,0,$count,100,0))."%");
+	imagettftext($img,10,0,$start_x-60,5+P($i,0,$count,$start_y,$end_y),imagecolorallocate($img,0,0,0),$config["font"],round(P($i,0,$count,100,0))."%");
 }
 $count=6;
 for($i=0;$i<=$count;$i++){
 	imageline($img,P($i,0,$count,$start_x,$end_x),$start_y,P($i,0,$count,$start_x,$end_x),$end_y,imagecolorallocate($img,0,0,0));
-	imagettftext($img,10,0,($i*$end_x+($count-$i)*$start_x)/$count-20,$end_y+20,imagecolorallocate($img,0,0,0),"arial.ttf",date("H:i:s",round(P($i,0,$count,$start_time,$end_time))));
+	imagettftext($img,10,0,($i*$end_x+($count-$i)*$start_x)/$count-20,$end_y+20,imagecolorallocate($img,0,0,0),$config["font"],date("H:i:s",round(P($i,0,$count,$start_time,$end_time))));
 }
 
 $query=new query;
