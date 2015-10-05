@@ -7,6 +7,6 @@ $config["domain"]=array(
 "www.google.com"=>array(255,0,0)
 );
 $config["pingtimes"]=10;
-$config["sleeptime"]["one"]=30;
-$config["sleeptime"]["all"]=60;
+$config["runtimes"]=0; // 0 for forever
+$config["sleeptime"]=60;
 ?>

@@ -65,6 +65,11 @@ imagedestroy($img);
 顏色意義
 <font color="#0000FF">下載</font>
 <font color="#FF0000">上傳</font>
+<br>
+<br>
+<?php
+@include("../../function/developer.php");
+?>
 </center>
 </body>
 </html>

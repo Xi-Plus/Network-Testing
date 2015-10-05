@@ -70,6 +70,10 @@ foreach($config["domain"] as $domain => $color){
 <?php
 }
 ?>
+<br>
+<?php
+@include("../../function/developer.php");
+?>
 </center>
 </body>
 </html>

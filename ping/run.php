@@ -11,10 +11,11 @@ if(strpos($OS,"WIN")!==false){
 }else if(strpos($OS,"LINUX")!==false){
 	$parameter="c";
 }else die("Cannot identify system os.");
-while(true){
+for($i=1;$i<=$config["runtimes"]||$config["runtimes"]==0;$i++){
+	echo "# ".$i."\n";
 	foreach($config["domain"] as $domain => $color){
 		$command="ping ".$domain." -".$parameter." ".$config["pingtimes"];
-		echo $command."\r\n";
+		echo $command."\n";
 		$time=date("Y-m-d H:i:s");
 		ob_start();
 		system($command);
@@ -23,7 +24,7 @@ while(true){
 		preg_match("/(\d*)%/",$text,$match);
 		$percent=$match[1];
 		$percent=100-$percent;
-		echo $time."  ".$domain."  ".$percent."%\r\n";
+		echo $time."  ".$domain."  ".$percent."%\n";
 		$query=new query;
 		$query->dbname = "network";
 		$query->table = "ping";
@@ -33,10 +34,7 @@ while(true){
 			array("percent",$percent)
 		);
 		INSERT($query);
-		echo "sleep one\r\n";
-		sleep($config["sleeptime"]["one"]);
 	}
-	echo "sleep all\r\n";
-	sleep($config["sleeptime"]["all"]);
+	sleep($config["sleeptime"]);
 }
 ?>
