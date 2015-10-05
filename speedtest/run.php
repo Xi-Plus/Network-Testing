@@ -4,8 +4,9 @@ if(php_sapi_name()!='cli')die("Permission Denied");
 require("config.php");
 require($config["path"]["sql"]);
 $result=array();
-for($i=1;$i<=$config["runtimes"]||$config["runtimes"]==0;$i++){
-	echo "# ".$i."\n";
+$i=1;
+while(true){
+	echo "# ".$i++."\n";
 	$time=date("Y-m-d H:i:s");
 	ob_start();
 	system($config["path"]["python"]." ".$config["path"]["speedtest_cli"]);
@@ -25,6 +26,7 @@ for($i=1;$i<=$config["runtimes"]||$config["runtimes"]==0;$i++){
 		array("upload",$speed_up)
 	);
 	INSERT($query);
+	if($i>$config["runtimes"]&&$config["runtimes"]!=0)break;
 	sleep($config["sleeptime"]);
 }
 ?>

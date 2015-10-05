@@ -11,8 +11,9 @@ if(strpos($OS,"WIN")!==false){
 }else if(strpos($OS,"LINUX")!==false){
 	$parameter="c";
 }else die("Cannot identify system os.");
-for($i=1;$i<=$config["runtimes"]||$config["runtimes"]==0;$i++){
-	echo "# ".$i."\n";
+$i=1;
+while(true){
+	echo "# ".$i++."\n";
 	foreach($config["domain"] as $domain => $color){
 		$command="ping ".$domain." -".$parameter." ".$config["pingtimes"];
 		echo $command."\n";
@@ -35,6 +36,7 @@ for($i=1;$i<=$config["runtimes"]||$config["runtimes"]==0;$i++){
 		);
 		INSERT($query);
 	}
+	if($i>$config["runtimes"]&&$config["runtimes"]!=0)break;
 	sleep($config["sleeptime"]);
 }
 ?>
